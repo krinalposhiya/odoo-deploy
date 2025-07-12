@@ -1,6 +1,6 @@
 FROM python:3.10
 
-# Install system dependencies
+# Install system dependencies (optimized)
 RUN apt-get update && apt-get install -y \
     git \
     libpq-dev \
@@ -12,25 +12,27 @@ RUN apt-get update && apt-get install -y \
     libldap2-dev \
     libssl-dev \
     libffi-dev \
-    node-less \
-    npm
+    curl
 
-# Create Odoo user
+# Install nodejs and less manually (replaces node-less)
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g less less-plugin-clean-css
+
+# Create odoo user
 RUN useradd -m -d /opt/odoo -U -r -s /bin/bash odoo
 
-# Set working directory
 WORKDIR /opt/odoo
 
-# Copy requirements and install Python packages
+# Install python dependencies
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 
-# Copy official and custom addons
+# Copy addons
 COPY official_addons /opt/odoo/official_addons
 COPY custom /opt/odoo/custom
 
 # Expose port
 EXPOSE 8069
 
-# Run Odoo
 CMD ["python3", "odoo-bin", "-c", "odoo.conf"]
