@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    
+
+    
+   <record id="view_product_history_wizard_form" model="ir.ui.view">
+    <field name="name">product.history.wizard.form</field>
+    <field name="model">product.history.wizard</field>
+    <field name="arch" type="xml">
+        <form string="Add Sharing History">
+            <group>
+                <field name="product_template_id" readonly='1'/>
+                <field name="partner_id"/>
+                <field name="date_shared"/>
+                <field name="shared_by"/>
+                <field name="notes"/>
+            </group>
+            <footer>
+                <button name="action_add_to_history" type="object" class="btn-primary" string="Add"/>
+                <button string="Cancel" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>
+   
+
+</odoo>

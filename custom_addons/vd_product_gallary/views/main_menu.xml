@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+   <menuitem id="menu_product_gallary_root" name="Product Gallery" sequence="10"/>
+
+     
+     <!-- Configuration Submenu -->
+    <menuitem id="menu_gallary_configuration" name="Configuration" parent="menu_product_gallary_root" sequence="90" groups="vd_product_gallary.group_product_gallery_manager"/>
+
+   
+</odoo>

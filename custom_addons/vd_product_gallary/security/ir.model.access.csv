@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_product_video_gallary,video.gallary,model_video_gallary,base.group_user,1,1,1,1
+
+access_product_detail_history,product.detail.history,model_product_detail_history,base.group_user,1,1,1,1
+access_whatsapp_wizard,whatsapp.wizard,model_whatsapp_wizard,base.group_user,1,1,1,1
+
+
+access_product_history_wizard,product.history.wizard,model_product_history_wizard,base.group_user,1,1,1,1
+

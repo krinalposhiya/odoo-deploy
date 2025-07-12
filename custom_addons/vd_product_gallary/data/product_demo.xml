@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo noupdate="1">
+    <!-- Categories -->
+    <record id="category_pipe_making_machinery" model="product.category">
+          <field name="parent_id" ref="product.product_category_all"/>
+        <field name="name">Pipe Making Machinery</field>
+    </record>
+
+    <record id="category_ball_making_machinery" model="product.category">
+        <field name="parent_id" ref="product.product_category_all"/>
+        <field name="name">Ball Making Machinery</field>
+    </record>
+
+    <record id="category_diamond_cut_faceting_machines" model="product.category">
+          <field name="parent_id" ref="product.product_category_all"/>
+        <field name="name">Diamond Cut Faceting Machines</field>
+    </record>
+
+    <record id="category_coin_making_hydraulic_press" model="product.category">
+          <field name="parent_id" ref="product.product_category_all"/>
+        <field name="name">Coin Making Hydraulic Press</field>
+    </record>
+
+   <record id="product_gold_silver_automatic_hollow_tube_machine" model="product.template">
+        <field name="name">Gold &amp; Silver Automatic Hollow Tube (Pipe) Making Machine</field>
+        <field name="categ_id" ref="category_pipe_making_machinery"/>
+        <field name="is_equipment">True</field>
+         <field name="pro_type">machine</field>
+          <field name="image_1920" type="base64" file="vd_product_gallary/static/img/p1.jpg"/>
+    </record>
+
+    <record id="product_electric_drawbench" model="product.template">
+        <field name="name">Electric Drawbench with Speed Controller</field>
+        <field name="categ_id" ref="category_pipe_making_machinery"/>
+        <field name="is_equipment">True</field>
+        <field name="pro_type">machine</field>
+         <field name="image_1920" type="base64" file="vd_product_gallary/static/img/p2.jpg"/>
+    </record>
+
+    <record id="product_premium_finished_gold_testing_kit" model="product.template">
+        <field name="name">Premium Finished Gold Testing Kit</field>
+        <field name="categ_id" ref="category_pipe_making_machinery"/>
+        <field name="is_equipment">True</field>
+         <field name="pro_type">tool</field>
+          <field name="image_1920" type="base64" file="vd_product_gallary/static/img/p3.jpg"/>
+    </record>
+
+    <record id="product_automatic_ball_dull_machine" model="product.template">
+        <field name="name">Automatic Ball Dull &amp; Ball Calibration (2 In 1) Machine</field>
+        <field name="categ_id" ref="category_ball_making_machinery"/>
+        <field name="is_equipment">True</field>
+        <field name="pro_type">machine</field>
+           <field name="image_1920" type="base64" file="vd_product_gallary/static/img/b1.jpg"/>
+    </record>
+
+    <record id="product_eagle_jewellery_ball_calibrating_machine" model="product.template">
+        <field name="name">Eagle Jewellery Ball Calibrating Machine</field>
+        <field name="categ_id" ref="category_ball_making_machinery"/>
+        <field name="is_equipment">True</field>
+        <field name="pro_type">machine</field>
+           <field name="image_1920" type="base64" file="vd_product_gallary/static/img/b2.jpg"/>
+    </record>
+
+    <record id="product_gold_testing_touchstone" model="product.template">
+        <field name="name">Gold Testing Touchstone</field>
+        <field name="categ_id" ref="category_ball_making_machinery"/>
+        <field name="is_equipment">True</field>
+           <field name="pro_type">tool</field>
+              <field name="image_1920" type="base64" file="vd_product_gallary/static/img/b3.jpg"/>
+    </record>
+
+    <record id="product_diamond_cut_faceting_machine" model="product.template">
+        <field name="name">Diamond Cut Faceting Machines</field>
+        <field name="categ_id" ref="category_diamond_cut_faceting_machines"/>
+        <field name="is_equipment">True</field>
+        <field name="pro_type">machine</field>
+           <field name="image_1920" type="base64" file="vd_product_gallary/static/img/d1.jpg"/>
+    </record>
+
+    <record id="product_double_head_faceting_machine" model="product.template">
+        <field name="name">Double Head Faceting Machine</field>
+        <field name="categ_id" ref="category_diamond_cut_faceting_machines"/>
+        <field name="is_equipment">True</field>
+        <field name="pro_type">machine</field>
+           <field name="image_1920" type="base64" file="vd_product_gallary/static/img/d2.jpg"/>
+    </record>
+
+    <record id="product_double_head_zig_zag_faceting_machine" model="product.template">
+        <field name="name">Double Head Zig Zag Faceting Machine</field>
+        <field name="categ_id" ref="category_diamond_cut_faceting_machines"/>
+        <field name="is_equipment">True</field>
+        <field name="pro_type">machine</field>
+           <field name="image_1920" type="base64" file="vd_product_gallary/static/img/d3.jpg"/>
+    </record>
+
+    <record id="product_eagle_hydraulic_press" model="product.template">
+        <field name="name">Eagle Hydraulic Press “C” Type – For Blanks Cutting</field>
+        <field name="categ_id" ref="category_coin_making_hydraulic_press"/>
+        <field name="is_equipment">True</field>
+        <field name="pro_type">machine</field>
+         <field name="image_1920" type="base64" file="vd_product_gallary/static/img/c1.jpg"/>
+    </record>
+
+    <record id="product_hydraulic_press_c_type" model="product.template">
+        <field name="name">Hydraulic Press “C” Type – For Blanks Cutting</field>
+        <field name="categ_id" ref="category_coin_making_hydraulic_press"/>
+        <field name="is_equipment">True</field>
+        <field name="pro_type">machine</field>
+         <field name="image_1920" type="base64" file="vd_product_gallary/static/img/c2.jpg"/>
+    </record>
+
+    <record id="product_hydraulic_press_h_type" model="product.template">
+        <field name="name">Hydraulic Press “H” Type – Automatic Stroke System</field>
+        <field name="categ_id" ref="category_coin_making_hydraulic_press"/>
+        <field name="is_equipment">True</field>
+        <field name="pro_type">machine</field>
+         <field name="image_1920" type="base64" file="vd_product_gallary/static/img/c3.jpeg"/>
+    </record>
+</odoo>
+

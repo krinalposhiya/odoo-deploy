@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<record id="view_form_your_model" model="ir.ui.view">
+    <field name="name">video.gallary.form</field>
+    <field name="model">video.gallary</field>
+    <field name="arch" type="xml">
+        <form string="YouTube Preview Form">
+            <sheet>
+                <group>
+		        <group>
+		            <field name="youtube_url"/>
+		        </group>
+		          
+                <group>
+                    <field name="video_preview" readonly="1" widget="html" 
+                           style="margin-top:20px; text-align:center; background:#f9f9f9; border-radius:10px; padding:10px;" />
+                </group>
+
+                 </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+   <record id="view_video_gallery_tree" model="ir.ui.view">
+        <field name="name">video.gallery.tree</field>
+        <field name="model">video.gallary</field>
+        <field name="arch" type="xml">
+            <list string="Video Gallery">
+                <field name="youtube_url"/>
+            </list>
+        </field>
+    </record>
+ 
+<record id="view_video_gallery_kanban" model="ir.ui.view">
+    <field name="name">video.gallery.kanban</field>
+    <field name="model">video.gallary</field>
+    <field name="arch" type="xml">
+        <kanban class="o_kanban_small_column video_gallery_kanban" create="0">
+            <field name="youtube_url"/>
+             <field name="product_id"/> 
+            <field name="video_preview"/>
+          <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click o_kanban_card video_card"
+                         style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                border: none;
+                                border-radius: 16px;
+                                box-shadow: 0 8px 32px rgba(102, 126, 234, 0.25);
+                                padding: 0;
+                                display: flex;
+                                flex-direction: column;
+                                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                                cursor: pointer;
+                                max-width: 340px;
+                                margin: auto;
+                                overflow: hidden;
+                                position: relative;">
+
+                        <!-- Video Preview Container -->
+                        <div class="video_preview_container" 
+                             style="position: relative;
+                                    overflow: hidden;
+                                    border-radius: 16px 16px 0 0;
+                                    background: #f8fafc;
+                                    height: 180px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;">
+                            
+                           <field name="video_preview" widget="html" 
+           style="max-width: 100%; 
+                  max-height: none; /* Allow height to expand */
+                  width: auto;
+                  height: auto; /* This can be adjusted if needed */
+                  display: block;
+                  transition: transform 0.4s ease;
+                  object-fit: contain;"/>
+                        </div>
+                        
+                        <!-- Content Container -->
+                        <div class="video_content"
+                             style="padding: 1.5rem;
+                                    background: rgba(255, 255, 255, 0.95);
+                                    backdrop-filter: blur(20px);
+                                    border-radius: 0 0 16px 16px;
+                                    position: relative;">
+                            <div class="video_url"
+                                 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                                        font-weight: 600;
+                                        font-size: 0.9rem;
+                                        line-height: 1.4;
+                                        color: #1f2937;
+                                        margin-bottom: 0.5rem;">
+                                <t t-if="record.youtube_url.raw_value">
+                                    <a t-att-href="record.youtube_url.raw_value" 
+                                       target="_blank" 
+                                       class="video_link"
+                                       style="color: #1f2937;
+                                              text-decoration: none;
+                                              transition: all 0.3s ease;
+                                              display: flex;
+                                              align-items: center;
+                                              gap: 0.5rem;
+                                              overflow: hidden;
+                                              text-overflow: ellipsis;
+                                              white-space: nowrap;">
+                                       <span style="font-size: 1.1rem;">🎬</span>
+                                       <span t-esc="record.youtube_url.raw_value"/>
+                                    </a>
+                                </t>
+                                <t t-if="!record.youtube_url.raw_value">
+                                    <span style="color: #9ca3af;
+                                                 font-style: italic;
+                                                 display: flex;
+                                                 align-items: center;
+                                                 gap: 0.5rem;">
+                                        <span style="font-size: 1.1rem;">⚠️</span>
+                                        No URL Provided
+                                    </span>
+                                </t>
+                            </div>
+                            
+                            <!-- Product ID Display -->
+                          <div class="video_product"
+			     style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+				    font-weight: 500;
+				    font-size: 0.8rem;
+				    line-height: 1.4;
+				    color: #ffffff;">
+			    <t t-if="record.product_id.value">
+				<span ><b>Product:</b> <strong><t t-esc="record.product_id.value"/></strong></span>
+			    </t>
+			    <t t-if="!record.product_id.value">
+				<span style="color: #ffffff; font-style: italic;">
+				    No Product Assigned
+				</span>
+			    </t>
+			</div>
+
+
+                            <!-- Action Indicator -->
+                            <div style="position: absolute;
+                                        top: -8px;
+                                        right: 1rem;
+                                        background: #667eea;
+                                        color: white;
+                                        padding: 0.25rem 0.75rem;
+                                        border-radius: 12px;
+                                        font-size: 0.75rem;
+                                        font-weight: 600;
+                                        text-transform: uppercase;
+                                        letter-spacing: 0.5px;
+                                        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);">
+                                Watch
+                            </div>
+                        </div>
+                    </div>
+
+                    <style>
+                        .video_gallery_kanban {
+                            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                            padding: 1rem;
+                        }
+                        
+                        .video_card:hover {
+                            transform: translateY(-8px) scale(1.02);
+                            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+                        }
+                        
+                        .video_card:hover .video_preview_container field {
+                            transform: scale(1.05);
+                        }
+                        
+                        .video_card:hover .play_overlay {
+                            transform: translate(-50%, -50%) scale(1.1);
+                            opacity: 1;
+                            background: rgba(255, 255, 255, 1);
+                        }
+                        
+                        .video_card:hover .play_overlay div {
+                            border-left-color: #5a67d8;
+                        }
+                        
+                        .video_link:hover {
+                            color: #5a67d8 !important;
+                            transform: translateX(4px);
+                        }
+                        
+                        .video_link:hover span:first-child {
+                            transform: scale(1.2);
+                        }
+                        
+                        /* Responsive Design */
+                        @media (max-width: 768px) {
+                            .video_card {
+                                max-width: 100% !important;
+                                margin: 0.5rem !important;
+                            }
+                        }
+                        
+                        /* Animation for new cards */
+                        @keyframes cardSlideIn {
+                            from {
+                                opacity: 0;
+                                transform: translateY(30px) scale(0.9);
+                            }
+                            to {
+                                opacity: 1;
+                                transform: translateY(0) scale(1);
+                            }
+                        }
+                        
+                        .video_card {
+                            animation: cardSlideIn 0.5s ease-out;
+                        }
+                        
+                        /* Glassmorphism effect */
+                        .video_content {
+                            background: rgba(255, 255, 255, 0.25) !important;
+                            backdrop-filter: blur(20px) !important;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        }
+                        
+                        /* Enhanced loading state */
+                        .video_preview_container::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                            transform: translateX(-100%);
+                            transition: transform 0.6s;
+                        }
+                        
+                        .video_card:hover .video_preview_container::before {
+                            transform: translateX(100%);
+                        }
+                    </style>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+  <!--search-->
+    <record id="search_gallary" model="ir.ui.view">
+        <field name="name">Video Gallery- Search</field>
+        <field name="model">video.gallary</field>
+        <field name="arch" type="xml">
+            <search string="Video Gallery Search">
+                <field name="product_id"/>
+               
+            </search>
+        </field>
+    </record>
+                                           
+    <record id="action_video_gallery" model="ir.actions.act_window">
+        <field name="name">Video Gallery</field>
+        <field name="res_model">video.gallary</field>
+        <field name="view_mode">kanban</field>
+        </record>  
+        <menuitem id="menu_video_gallery_main" name="Gallery" parent="menu_product_gallary_root" action="action_video_gallery"  sequence="30"/>
+  
+</odoo>

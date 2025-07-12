@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="vd_product_gallary_action" model="ir.actions.client">
+            <field name="name">Product Gallery Dashboard</field>
+            <field name="tag">open_product_gallery_dashboard</field>
+        </record>
+
+		<menuitem
+	        id="menu_product_gallery_dashboard"
+	        name="Dashboard"
+	        parent="vd_product_gallary.menu_product_gallary_root" sequence="-1"
+	        action="vd_product_gallary.vd_product_gallary_action" 
+	         />
+    </data>
+</odoo>
