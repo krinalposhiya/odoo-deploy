@@ -1,0 +1,8 @@
+wheel
+psutil
+psycopg2
+babel
+werkzeug==2.1.2
+lxml
+decorator
+setuptools
